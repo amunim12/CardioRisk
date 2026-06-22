@@ -1,0 +1,36 @@
+# Brings up the prediction API and the Streamlit dashboard together.
+#   docker compose up --build
+# API  -> http://localhost:8000  (docs at /docs)
+# UI   -> http://localhost:8501
+#
+# Both services share the built image and mount ./artifacts read-only so they
+# serve whatever `cardiorisk train` last produced. Train first:
+#   docker compose run --rm api cardiorisk train
+
+services:
+  api:
+    build: .
+    image: cardiorisk
+    command: cardiorisk serve --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+    environment:
+      CARDIORISK_MODEL_PATH: /app/artifacts/model.joblib
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  ui:
+    image: cardiorisk
+    command: streamlit run app/streamlit_app.py --server.port 8501 --server.address 0.0.0.0 --server.headless true
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app:/app/app:ro
+      - ./artifacts:/app/artifacts:ro
+    depends_on:
+      - api

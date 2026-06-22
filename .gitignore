@@ -25,6 +25,8 @@ data/raw/*
 artifacts/*
 !artifacts/.gitkeep
 mlruns/
+mlflow.db
+*.db
 
 # OS / editor
 .DS_Store

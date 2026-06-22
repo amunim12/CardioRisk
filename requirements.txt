@@ -1,0 +1,16 @@
+# Core runtime dependencies (mirror of pyproject [project.dependencies]).
+# Pinned with lower bounds known to support modern Python; `pip install -e .`
+# is the preferred path. This file exists for quick, tooling-free installs.
+numpy>=2.1
+pandas>=2.2
+scikit-learn>=1.6
+scipy>=1.14
+matplotlib>=3.9
+joblib>=1.4
+ucimlrepo>=0.0.7
+typer>=0.12
+pydantic>=2.7
+pydantic-settings>=2.3
+pyyaml>=6.0
+fastapi>=0.111
+uvicorn[standard]>=0.30
