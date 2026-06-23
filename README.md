@@ -1,6 +1,6 @@
 # CardioRisk — Heart Disease Risk Prediction
 
-[![CI](https://github.com/OWNER/CardioRisk/actions/workflows/ci.yaml/badge.svg)](https://github.com/OWNER/CardioRisk/actions/workflows/ci.yaml)
+[![CI](https://github.com/amunim12/CardioRisk/actions/workflows/ci.yaml/badge.svg)](https://github.com/amunim12/CardioRisk/actions/workflows/ci.yaml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
 [![Code style: ruff](https://img.shields.io/badge/lint-ruff-orange.svg)](https://github.com/astral-sh/ruff)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
